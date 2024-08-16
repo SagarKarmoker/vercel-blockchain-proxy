@@ -1,10 +1,11 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+require('dotenv').config()
 
 const app = express();
 
 // Target HTTP server URL
-const target = 'http://129.154.245.79:8545';
+const target = process.env.TARGET_URL;
 
 app.use('/', createProxyMiddleware({
     target: target,
